@@ -35,7 +35,7 @@ public class StoreCosmosConfiguration extends AbstractCosmosConfiguration {
 
     @Override
     protected String getDatabaseName() {
-        return "";
+        return bookStoreConnectionProperties.getStoreDatabase();
     }
 
 
@@ -70,12 +70,8 @@ public class StoreCosmosConfiguration extends AbstractCosmosConfiguration {
     }
 
     //5. Create cosmos template for Store Database
-    @EnableCosmosRepositories(basePackages = {"com.spring.cosmos.ebookstore.model.book","com.spring.cosmos.ebookstore.model.cart", "com.spring.cosmos.ebookstore.model.order"}, cosmosTemplateRef = "bookStoreCosmosTemplate")
-    public class BookDataSourceConfiguration {
-        @Bean
-        public CosmosTemplate bookStoreCosmosTemplate(@Qualifier("bookStoreConnectionConfiguration") CosmosProperties bookStoreConnectionConfiguration, @Qualifier("bookStoreCosmosAsyncClient") CosmosAsyncClient client, @Qualifier("bookStoreCosmosConfig") CosmosConfig cosmosConfig, MappingCosmosConverter mappingCosmosConverter) {
-            return new CosmosTemplate(client, bookStoreConnectionConfiguration.getStoreDatabase(), cosmosConfig, mappingCosmosConverter, cosmosAuditingHandler);
-        }
+    @EnableCosmosRepositories(basePackages = {"com.spring.cosmos.ebookstore.model.book","com.spring.cosmos.ebookstore.model.cart", "com.spring.cosmos.ebookstore.model.order"})
+    public class BookStoreDataSourceConfiguration {
     }
 
     //5. Create cosmos template for Security Database

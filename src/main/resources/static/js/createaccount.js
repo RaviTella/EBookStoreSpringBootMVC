@@ -3,7 +3,8 @@ $(function() {
   $("form[name='createaccount']").validate({
     // validation rules
     rules: {
-      name: "required",
+      firstName: "required",
+      lastName: "required",
       email: {
               required: true,
 
@@ -28,7 +29,8 @@ $(function() {
            },
     // validation error messages
     messages: {
-      name: "Please enter your name",
+      firstName: "Please enter your first name",
+      lastName: "Please enter your last name",
       email: "Please enter a valid email address",
       password: {
         required: "Please enter your password",

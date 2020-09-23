@@ -1,6 +1,7 @@
 package com.spring.cosmos.ebookstore.security;
 
 import com.spring.cosmos.ebookstore.model.user.Address;
+import com.spring.cosmos.ebookstore.model.user.CreditCard;
 import com.spring.cosmos.ebookstore.model.user.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -72,4 +73,8 @@ public class SecuredUser implements UserDetails {
     public String getCustomerId(){
         return this.user.getId();
     }
+
+    public  void setCreditCardNumber(CreditCard creditCard){this.user.setCreditCard(creditCard); }
+
+    public CreditCard getCreditCard(){return this.user.getCreditCard();}
 }

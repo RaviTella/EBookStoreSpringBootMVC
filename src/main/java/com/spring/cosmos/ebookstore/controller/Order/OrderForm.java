@@ -16,6 +16,7 @@ public class OrderForm {
     private String state;
     private String zip;
     private String Country;
+    private String creditCardNumber;
 
     public String getStatus() {
         return status;
@@ -87,5 +88,13 @@ public class OrderForm {
 
     public void setCountry(String country) {
         Country = country;
+    }
+
+    public String getCreditCardNumber() {
+        return creditCardNumber;
+    }
+
+    public void setCreditCardNumber(String creditCardNumber) {
+        this.creditCardNumber = creditCardNumber;
     }
 }

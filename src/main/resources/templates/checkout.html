@@ -102,9 +102,16 @@
                 <div class="col-md-3"><h5>Shipping address</h5>
                 </div>
                 <div class="col-md-3" th:if="${customer.address != null}">
-                    <th:block th:utext="${customer.firstName}"/> <th:block th:utext="${customer.lastName}"/><br>
-                    <th:block th:utext="${customer.address.street}"/><br>
-                    <th:block th:utext="${customer.address.city}"/>, <th:block th:utext="${customer.address.state}"/> <th:block th:utext="${customer.address.zip}"/><br>
+                    <th:block th:utext="${customer.firstName}"/>
+                    <th:block th:utext="${customer.lastName}"/>
+                    <br>
+                    <th:block th:utext="${customer.address.street}"/>
+                    <br>
+                    <th:block th:utext="${customer.address.city}"/>
+                    ,
+                    <th:block th:utext="${customer.address.state}"/>
+                    <th:block th:utext="${customer.address.zip}"/>
+                    <br>
                     <th:block th:utext="${customer.address.country}"/>
                 </div>
                 <div class="col-md-3" th:if="${customer.address == null}">
@@ -113,7 +120,8 @@
                     </div>
                     <div class="form-group">
                         <label for="streetAddress">Street Address</label>
-                        <input type="streetAddress" class="form-control" id="streetAddress" name="streetAddress" placeholder="Street Address" required>
+                        <input type="streetAddress" class="form-control" id="streetAddress" name="streetAddress"
+                               placeholder="Street Address" required>
                     </div>
                     <div class="form-group">
                         <label for="city">City</label>
@@ -133,9 +141,22 @@
             <div class="row">
                 <div class="col-md-3"><h5>Payment Method</h5>
                 </div>
-                <div class="col-md-3">
+
+
+                <div class="col-md-3" th:if="${customer.creditCard == null}">
+                    <div class="form-group">
+                        <label for="creditCardNumber">Credit Card Number</label>
+                        <input type="creditCardNumber" class="form-control" id="creditCardNumber"
+                               name="creditCardNumber" placeholder="Credit Card Number" required pattern="[0-9]{16}"
+                               oninvalid="setCustomValidity('Must be 16 digits')" title="Must be 16 digits">
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-3" th:if="${customer.creditCard != null}">
                 <span><img class="img-fluid" height="220"
-                           src=https://mtchouimages.blob.core.windows.net/books/mastercard.gif> Mastercard ending in 5432</span>
+                           src=https://mtchouimages.blob.core.windows.net/books/mastercard.gif>  Mastercard ending in <th:block th:utext="${#strings.substring(customer.creditCard.number,12,16)}"/></span>
                 </div>
 
                 <div class="col"></div>

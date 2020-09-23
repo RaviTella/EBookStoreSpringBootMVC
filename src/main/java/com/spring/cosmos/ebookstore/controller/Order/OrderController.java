@@ -7,6 +7,7 @@ import com.spring.cosmos.ebookstore.model.order.OrderRepository;
 import com.spring.cosmos.ebookstore.model.order.LineItem;
 import com.spring.cosmos.ebookstore.model.order.Order;
 import com.spring.cosmos.ebookstore.model.user.Address;
+import com.spring.cosmos.ebookstore.model.user.CreditCard;
 import com.spring.cosmos.ebookstore.model.user.User;
 import com.spring.cosmos.ebookstore.model.user.UserRepository;
 import com.spring.cosmos.ebookstore.security.SecuredUser;
@@ -45,6 +46,7 @@ public class OrderController {
             User user =getUserFromOrderForm(orderForm);
             userRepository.save(user);
             securedUser.setAddress(user.getAddress());
+            securedUser.setCreditCardNumber(user.getCreditCard());
         }
         cartService.deleteCart(session.getId(), session.getId());
         model.addAttribute("customer", securedUser);
@@ -122,7 +124,9 @@ public class OrderController {
                 .get();
         user.setId(orderForm.getCustomerId());
         Address address = new Address(orderForm.getStreetAddress(), orderForm.getCity(), orderForm.getState(), orderForm.getZip(), "USA");
+        CreditCard creditCard = new CreditCard(orderForm.getCreditCardNumber(),"Master","12/2025","123");
         user.setAddress(address);
+        user.setCreditCard(creditCard);
         return user;
     }
 

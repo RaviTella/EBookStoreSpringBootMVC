@@ -6,6 +6,13 @@ public class CreditCard {
     private String expiration;
     private String securityCode;
 
+    public CreditCard(String number, String type, String expiration, String securityCode) {
+        this.number = number;
+        this.type = type;
+        this.expiration = expiration;
+        this.securityCode = securityCode;
+    }
+
     public String getNumber() {
         return number;
     }

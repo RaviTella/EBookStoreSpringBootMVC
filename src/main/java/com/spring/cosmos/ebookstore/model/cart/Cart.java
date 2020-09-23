@@ -2,10 +2,14 @@ package com.spring.cosmos.ebookstore.model.cart;
 
 import com.azure.spring.data.cosmos.core.mapping.Container;
 import com.azure.spring.data.cosmos.core.mapping.PartitionKey;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.annotation.Version;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Container(containerName = "cart", ru = "500")
@@ -15,6 +19,7 @@ public class Cart {
     private String id;
     private BigDecimal subTotal;
     private List<CartItem> items;
+
 
     public Cart() {
         this.items = new ArrayList<>();
@@ -47,4 +52,5 @@ public class Cart {
     public void setSubTotal(BigDecimal subTotal) {
         this.subTotal = subTotal;
     }
+
 }

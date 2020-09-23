@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.spring.cosmos.ebookstore</groupId>
-	<artifactId>ebookstore</artifactId>
+	<artifactId>EBookStoreSpringBootMVC</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>EBookStoreSpringBootMVC</name>
 	<description>Sample EBook Store Application using Spring data cosmos repository</description>
