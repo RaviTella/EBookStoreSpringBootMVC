@@ -26,10 +26,10 @@ I will be adding additional capabilities as time permits. Check out the project 
 * If you prefer docker:  
   * mvnw package 
   * docker build -t <YOUR REPO>/ebookstorespringbootmvc .
-  * docker run -p 80:80 -e azure.cosmos.bookstore.uri=<URI> -e azure.cosmos.bookstore.key=<PRIMARY KEY> -t <YOUR REPO>/ebookstorespringbootmvc
+  * docker run -p 80:80 -e azure.cosmos.bookstore.uri=<COSMOS_ENDPOINT> -e azure.cosmos.bookstore.key=<COSMOS_KEY> -t <YOUR REPO>/ebookstorespringbootmvc
   * Access the WebApp at http://localhost/ebooks/index 
 * If you want to just get the app up and running, you could use my container:
-  * docker run -p 80:80 -e azure.cosmos.bookstore.uri=<URI> -e azure.cosmos.bookstore.key=<PRIMARY KEY>  -t ravitella/ebookstorespringbootmvc
+  * docker run -p 80:80 -e azure.cosmos.bookstore.uri=<COSMOS_ENDPOINT> -e azure.cosmos.bookstore.key=<COSMOS_KEY>  -t ravitella/ebookstorespringbootmvc
   * Access the WebApp at http://localhost/ebooks/index 
 
 * This is the home page
