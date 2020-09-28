@@ -7,7 +7,7 @@ The current version has the following capabilities:
 * Directly using CosmosAsynClient from a spring application
 * Infinite scroll with JQuery
 
-I will be adding additional capabilities as time permits. Check out the project page associated with this repo for more details.
+I will be add additional capabilities as time permits. Check out the project page associated with this repo for more details.
 
 # Instructions
 
