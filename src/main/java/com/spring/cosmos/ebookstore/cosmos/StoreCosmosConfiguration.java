@@ -88,7 +88,7 @@ public class StoreCosmosConfiguration extends AbstractCosmosConfiguration {
 
         @Override
         public void processResponseDiagnostics(@Nullable ResponseDiagnostics responseDiagnostics) {
-            logger.info("Response Diagnostics {}", responseDiagnostics);
+            //logger.info("Response Diagnostics {}", responseDiagnostics);
         }
     }
 }

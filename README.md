@@ -1,19 +1,13 @@
 # Overview
-This sample ecommerce application(sells only a few books:) for now) is built with Spring Boot 2.3.1 on Spring WebFlux stack. This application uses Azure Cosmos DB SQL API with the Java SDK 4.0, whish is based on the reactor core.
+This sample ecommerce application(sells only a few books:) for now, is built with Spring Boot 2.3.1(MVC on servlet stack). This application uses Azure Cosmos DB SQL API with "Spring Data Cosmos" client library(3.0.0-beta.2).
 The current version has the following capabilities:
-* Display catalog
-* Add items to cart
-* Remove items from cart
-* Check out
-* Order creation, confirmation and history
-* Order processing with change feed processor
-* Infinite scrolling
-* Unit testing reactive streams with JUnit, StepVerifier/TestPublisher and Mockito
+* Collection configuration with annotations(Indexing, RUs)
+* Multiple database and collections accessed from single application
+* Enabling cosmos request diagnostics
+* Directly using CosmosAsynClient from a spring application
+* Infinite scroll with JQuery
 
 I will be adding additional capabilities as time permits. Check out the project page associated with this repo for more details.
-
-
-Additionally, I plan to decompose the application into microservices and leverage spring cloud capabilities to address some of the distributed system challenges.
 
 # Instructions
 
@@ -26,17 +20,17 @@ Additionally, I plan to decompose the application into microservices and leverag
 ## Then:
 * Update the cosmos DB endpoint, key and locations information in application.properties
 * mvn spring-boot:run from the project base
-* On startup the application creates 3 cosmos collections, namely book, order, cart and order-lease. Each one will be configured with 400 RUs.
+* On startup the application creates 2 databases and 4 collections between them.
 * Access the WebApp at http://localhost/ebooks/index
-* Default user accounts customer1/customer1 and customer2/customer2
+* You will have to create user account to access the application functionality. The registration process asks for email ID, which will be used  as the login ID. Any email address is fine as long as it has a valid format. 
 * If you prefer docker:  
   * mvnw package 
-  * docker build -t <YOUR REPO>/store .
-  * docker run -p 80:80 -e database.endpoint=<URI> -e database.key=<PRIMARY KEY> -t <YOUR REPO>/store
-  * Access the WebApp at http://localhost/ebooks/index with the default accounts mentioned previously
+  * docker build -t <YOUR REPO>/ebookstorespringbootmvc .
+  * docker run -p 80:80 -e azure.cosmos.bookstore.uri=<URI> -e azure.cosmos.bookstore.key=<PRIMARY KEY> -t <YOUR REPO>/ebookstorespringbootmvc
+  * Access the WebApp at http://localhost/ebooks/index 
 * If you want to just get the app up and running, you could use my container:
-  * docker run -p 80:80 -e database.endpoint=<COSMOS_ENDPOINT> -e database.key=<COSMOS_KEY> -t ravitella/store
-  * Access the WebApp at http://localhost/ebooks/index with the default accounts mentioned previously 
+  * docker run -p 80:80 -e azure.cosmos.bookstore.uri=<URI> -e azure.cosmos.bookstore.key=<PRIMARY KEY>  -t ravitella/ebookstorespringbootmvc
+  * Access the WebApp at http://localhost/ebooks/index 
 
 * This is the home page
 
