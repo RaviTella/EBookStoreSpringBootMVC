@@ -3,6 +3,8 @@ This sample ecommerce application(sells only a few books:) for now, is built wit
 The current version has the following capabilities:
 * Collection configuration with annotations(Indexing, RUs)
 * Multiple database and collections accessed from single application
+* Auto generating UUID based IDs
+* Spring Data Repository pattern 
 * Enabling cosmos request diagnostics
 * Directly using CosmosAsynClient from a spring application
 * Infinite scroll with JQuery
