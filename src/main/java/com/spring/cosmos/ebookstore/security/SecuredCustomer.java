@@ -2,17 +2,17 @@ package com.spring.cosmos.ebookstore.security;
 
 import com.spring.cosmos.ebookstore.model.user.Address;
 import com.spring.cosmos.ebookstore.model.user.CreditCard;
-import com.spring.cosmos.ebookstore.model.user.User;
+import com.spring.cosmos.ebookstore.model.user.Customer;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 
-public class SecuredUser implements UserDetails {
-    private User user;
+public class SecuredCustomer implements UserDetails {
+    private Customer customer;
 
-    public SecuredUser(User user) {
-        this.user = user;
+    public SecuredCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     @Override
@@ -22,12 +22,12 @@ public class SecuredUser implements UserDetails {
 
     @Override
     public String getPassword() {
-        return this.user.getPassword();
+        return this.customer.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return this.user.getId();
+        return this.customer.getId();
     }
 
     @Override
@@ -51,30 +51,30 @@ public class SecuredUser implements UserDetails {
     }
 
     public String getFirstName() {
-        return this.user
+        return this.customer
                 .getName()
                 .getFirstName();
     }
 
     public String getLastName() {
-        return this.user
+        return this.customer
                 .getName()
                 .getLastName();
     }
 
     public Address getAddress() {
-        return this.user.getAddress();
+        return this.customer.getAddress();
     }
 
     public void setAddress(Address address){
-        this.user.setAddress(address);
+        this.customer.setAddress(address);
     }
 
     public String getCustomerId(){
-        return this.user.getId();
+        return this.customer.getId();
     }
 
-    public  void setCreditCardNumber(CreditCard creditCard){this.user.setCreditCard(creditCard); }
+    public  void setCreditCardNumber(CreditCard creditCard){this.customer.setCreditCard(creditCard); }
 
-    public CreditCard getCreditCard(){return this.user.getCreditCard();}
+    public CreditCard getCreditCard(){return this.customer.getCreditCard();}
 }

@@ -12,7 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
-    private CustomerUserDetailService securedUserDetailService;
+    private CustomerDetailService securedUserDetailService;
 
     @Override
     public void configure(HttpSecurity http) throws Exception {

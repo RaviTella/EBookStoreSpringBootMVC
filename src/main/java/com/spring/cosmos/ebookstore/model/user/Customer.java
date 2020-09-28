@@ -1,14 +1,16 @@
 package com.spring.cosmos.ebookstore.model.user;
 
 import com.azure.spring.data.cosmos.core.mapping.Container;
+import com.azure.spring.data.cosmos.core.mapping.CosmosIndexingPolicy;
 import com.azure.spring.data.cosmos.core.mapping.PartitionKey;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 
 import java.util.Date;
 
-@Container(containerName = "user", ru = "700")
-public class User {
+@Container(containerName = "customer", ru = "700")
+@CosmosIndexingPolicy(excludePaths = "/*")
+public class Customer {
     @Id
     @PartitionKey
     private String id;
@@ -18,10 +20,10 @@ public class User {
     private Contact contact;
     private CreditCard creditCard;
 
-    public User() {
+    public Customer() {
     }
 
-    public User(String id, String password, Name name) {
+    public Customer(String id, String password, Name name) {
         this.id = id;
         this.password = password;
         this.name = name;

@@ -1,4 +1,4 @@
-package com.spring.cosmos.ebookstore.controller.Order;
+package com.spring.cosmos.ebookstore.controller.order;
 
 import com.spring.cosmos.ebookstore.model.order.LineItem;
 

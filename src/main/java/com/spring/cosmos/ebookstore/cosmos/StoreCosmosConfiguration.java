@@ -71,14 +71,14 @@ public class StoreCosmosConfiguration extends AbstractCosmosConfiguration {
 
     //5. Create cosmos template for Store Database
     @EnableCosmosRepositories(basePackages = {"com.spring.cosmos.ebookstore.model.book","com.spring.cosmos.ebookstore.model.cart", "com.spring.cosmos.ebookstore.model.order"})
-    public class BookStoreDataSourceConfiguration {
+    public class StoreDataBaseConfiguration {
     }
 
     //5. Create cosmos template for Security Database
-    @EnableCosmosRepositories(basePackages = {"com.spring.cosmos.ebookstore.model.user"}, cosmosTemplateRef = "securityCosmosTemplate")
-    public class SecurityDataSourceConfiguration {
+    @EnableCosmosRepositories(basePackages = {"com.spring.cosmos.ebookstore.model.user"}, cosmosTemplateRef = "securityDatabaseCosmosTemplate")
+    public class SecurityDataBaseConfiguration {
         @Bean
-        public CosmosTemplate securityCosmosTemplate(@Qualifier("bookStoreConnectionConfiguration") CosmosProperties bookStoreConnectionConfiguration, @Qualifier("bookStoreCosmosAsyncClient") CosmosAsyncClient client, @Qualifier("bookStoreCosmosConfig") CosmosConfig cosmosConfig, MappingCosmosConverter mappingCosmosConverter) {
+        public CosmosTemplate securityDatabaseCosmosTemplate(@Qualifier("bookStoreConnectionConfiguration") CosmosProperties bookStoreConnectionConfiguration, @Qualifier("bookStoreCosmosAsyncClient") CosmosAsyncClient client, @Qualifier("bookStoreCosmosConfig") CosmosConfig cosmosConfig, MappingCosmosConverter mappingCosmosConverter) {
             return new CosmosTemplate(client, bookStoreConnectionConfiguration.getSecurityDatabase(), cosmosConfig, mappingCosmosConverter, cosmosAuditingHandler);
         }
     }
@@ -88,7 +88,7 @@ public class StoreCosmosConfiguration extends AbstractCosmosConfiguration {
 
         @Override
         public void processResponseDiagnostics(@Nullable ResponseDiagnostics responseDiagnostics) {
-            //logger.info("Response Diagnostics {}", responseDiagnostics);
+            logger.info("Response Diagnostics {}", responseDiagnostics);
         }
     }
 }

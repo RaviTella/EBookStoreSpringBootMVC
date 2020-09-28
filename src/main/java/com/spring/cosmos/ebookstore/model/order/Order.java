@@ -1,6 +1,7 @@
 package com.spring.cosmos.ebookstore.model.order;
 
 import com.azure.spring.data.cosmos.core.mapping.Container;
+import com.azure.spring.data.cosmos.core.mapping.CosmosIndexingPolicy;
 import com.azure.spring.data.cosmos.core.mapping.GeneratedValue;
 import com.azure.spring.data.cosmos.core.mapping.PartitionKey;
 import org.springframework.data.annotation.*;
@@ -14,6 +15,7 @@ import java.util.List;
 
 
 @Container(containerName = "order", ru = "400")
+@CosmosIndexingPolicy(includePaths= "/customerId/?", excludePaths = "/*")
 public class Order {
     @Id
     @GeneratedValue

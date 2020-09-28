@@ -1,8 +1,8 @@
 package com.spring.cosmos.ebookstore.security;
 
 import com.azure.cosmos.models.PartitionKey;
-import com.spring.cosmos.ebookstore.model.user.User;
-import com.spring.cosmos.ebookstore.model.user.UserRepository;
+import com.spring.cosmos.ebookstore.model.user.Customer;
+import com.spring.cosmos.ebookstore.model.user.CustomerRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,21 +12,21 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CustomerUserDetailService implements UserDetailsService {
+public class CustomerDetailService implements UserDetailsService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    private UserRepository userRepository;
+    private CustomerRepository customerRepository;
 
     @Autowired
-    public CustomerUserDetailService(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public CustomerDetailService(CustomerRepository userRepository) {
+        this.customerRepository = userRepository;
     }
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        User user = null;
+        Customer user = null;
         try {
-            user = userRepository
+            user = customerRepository
                     .findById(email, new PartitionKey(email))
                     .orElseThrow(() -> {
                         return new UsernameNotFoundException(email);
@@ -35,6 +35,6 @@ public class CustomerUserDetailService implements UserDetailsService {
             logger.error(e.toString());
             throw e;
         }
-        return new SecuredUser(user);
+        return new SecuredCustomer(user);
     }
 }

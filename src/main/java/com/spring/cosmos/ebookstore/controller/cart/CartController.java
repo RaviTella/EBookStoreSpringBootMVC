@@ -1,9 +1,9 @@
-package com.spring.cosmos.ebookstore.controller.Cart;
+package com.spring.cosmos.ebookstore.controller.cart;
 
 import com.spring.cosmos.ebookstore.model.cart.CartService;
 import com.spring.cosmos.ebookstore.model.cart.Cart;
 import com.spring.cosmos.ebookstore.model.cart.CartItem;
-import com.spring.cosmos.ebookstore.security.SecuredUser;
+import com.spring.cosmos.ebookstore.security.SecuredCustomer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-import java.security.Principal;
 import java.util.UUID;
 
 @Controller
@@ -39,7 +38,7 @@ public class CartController {
     }
 
     @GetMapping(value = "/ebooks/cart")
-    public String getCart(Model model, HttpSession session, @AuthenticationPrincipal SecuredUser securedUser) {
+    public String getCart(Model model, HttpSession session, @AuthenticationPrincipal SecuredCustomer securedUser) {
         Cart cart = cartService
                 .getCart(session.getId());
         model.addAttribute("customer", securedUser);

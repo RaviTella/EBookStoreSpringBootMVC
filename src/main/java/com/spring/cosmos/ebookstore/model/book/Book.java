@@ -1,6 +1,7 @@
 package com.spring.cosmos.ebookstore.model.book;
 
 import com.azure.spring.data.cosmos.core.mapping.Container;
+import com.azure.spring.data.cosmos.core.mapping.CosmosIndexingPolicy;
 import com.azure.spring.data.cosmos.core.mapping.PartitionKey;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.data.annotation.Id;
@@ -8,6 +9,7 @@ import org.springframework.data.annotation.Id;
 import java.math.BigDecimal;
 
 @Container(containerName = "book", ru = "400")
+@CosmosIndexingPolicy(excludePaths = "/*")
 public class Book {
     @Id
     private String id;

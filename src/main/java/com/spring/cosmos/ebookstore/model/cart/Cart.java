@@ -1,6 +1,7 @@
 package com.spring.cosmos.ebookstore.model.cart;
 
 import com.azure.spring.data.cosmos.core.mapping.Container;
+import com.azure.spring.data.cosmos.core.mapping.CosmosIndexingPolicy;
 import com.azure.spring.data.cosmos.core.mapping.PartitionKey;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
@@ -12,7 +13,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@Container(containerName = "cart", ru = "500")
+@Container(containerName = "cart", ru = "500", timeToLive=300)
+@CosmosIndexingPolicy(excludePaths = "/*")
 public class Cart {
     @Id
     @PartitionKey
