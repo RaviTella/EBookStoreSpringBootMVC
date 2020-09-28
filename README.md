@@ -26,7 +26,7 @@ I will be add additional capabilities as time permits. Check out the project pag
 * Access the WebApp at http://localhost/ebooks/index
 * You will have to create user account to access the application functionality. The registration process asks for email ID, which will be used  as the login ID. Any email address is fine as long as it has a valid format. 
 * If you prefer docker:  
-  * mvnw package 
+  * mvn package 
   * docker build -t <YOUR REPO>/ebookstorespringbootmvc .
   * docker run -p 80:80 -e azure.cosmos.bookstore.uri=<COSMOS_ENDPOINT> -e azure.cosmos.bookstore.key=<COSMOS_KEY> -t <YOUR REPO>/ebookstorespringbootmvc
   * Access the WebApp at http://localhost/ebooks/index 
