@@ -33,7 +33,7 @@ I will add additional capabilities as time permits. Check out the project page a
 * If you want to just get the app up and running, you could use my container:
   * docker run -p 80:80 -e azure.cosmos.bookstore.uri=<COSMOS_ENDPOINT> -e azure.cosmos.bookstore.key=<COSMOS_KEY>  -t ravitella/ebookstorespringbootmvc
   * Access the WebApp at http://localhost/ebooks/index 
-
+* You can access my live app at http://bookstorepringbootmvc.westus.azurecontainer.io when available:)    
 * This is the home page
 
  ![Image](BookStore.png)
