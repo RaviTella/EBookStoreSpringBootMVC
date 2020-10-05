@@ -1,6 +1,7 @@
 # Overview
-This sample ecommerce application(sells only a few books:) for now, is built with Spring Boot 2.3.1(MVC on servlet stack). This application uses Azure Cosmos DB SQL API with "Spring Data Cosmos" client library(3.0.0-beta.2).
-The current version has the following capabilities:
+This sample ecommerce application(sells only a few books:) for now, is built with Spring Boot 2.3.1(MVC on servlet stack). This application uses Azure Cosmos DB SQL API with "Spring Data Cosmos" client library(3.0.0).
+The current version of the app showcases the following capabilities:
+* @Query annotation for finder methods
 * Collection configuration with annotations(Indexing, RUs)
 * Multiple database and collections accessed from single application
 * Auto generating UUID based IDs
