@@ -4,6 +4,7 @@ import com.azure.cosmos.CosmosAsyncClient;
 import com.azure.cosmos.CosmosAsyncContainer;
 import com.azure.cosmos.models.CosmosQueryRequestOptions;
 import com.azure.cosmos.util.CosmosPagedFlux;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 
@@ -16,6 +17,7 @@ import java.util.List;
 public class BookRepositoryAsync {
     private CosmosAsyncClient cosmosAsyncClient;
 
+    @Autowired
     public BookRepositoryAsync(CosmosAsyncClient cosmosAsyncClient) {
         this.cosmosAsyncClient = cosmosAsyncClient;
     }

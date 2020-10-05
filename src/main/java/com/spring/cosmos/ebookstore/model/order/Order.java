@@ -14,7 +14,7 @@ import java.util.Date;
 import java.util.List;
 
 
-@Container(containerName = "order", ru = "400")
+@Container(containerName = "Order", ru = "400")
 @CosmosIndexingPolicy(includePaths= "/customerId/?", excludePaths = "/*")
 public class Order {
     @Id
